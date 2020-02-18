@@ -1,11 +1,17 @@
 <template>
-<div>Let's get started</div>
+<Header />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+import Header from '@/components/header/header.vue'
+
+@Component({
+  components: {
+    Header,
+  }
+})
 export default class App extends Vue {
 
   created(): void {

@@ -20,7 +20,10 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter)
 
+import { store } from './store'
+
 new Vue({
+  store,
   render: h =>
     h(App),
 }).$mount(`#app`);
