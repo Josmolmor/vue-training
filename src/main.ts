@@ -21,9 +21,11 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter)
 
 import { store } from './store'
+import { router } from './router'
 
 new Vue({
   store,
+  router,
   render: h =>
     h(App),
 }).$mount(`#app`);

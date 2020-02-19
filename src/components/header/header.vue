@@ -3,7 +3,7 @@
   <img src="/assets/logo.png" width="200" height="50" alt="Ce Ene I" />
   <nav class="header__nav">
     <ul>
-      <li>App</li>
+      <router-link :to="listRouteName">App</router-link>
       <li>Settings</li>
       <li v-if="userName">{{ userName | dotName }}</li>
     </ul>
@@ -15,6 +15,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 import { Getter, Action } from 'vuex-class'
+
+import { RouteName } from '@/router'
 
 import { dotName } from '@/utils/text'
 
@@ -30,6 +32,10 @@ export default class Header extends Vue {
 
   @Action
   retrieveUser!: () => Promise<void>
+
+  get listRouteName(): { name: string } {
+    return { name: RouteName.LIST }
+  }
 
   created(): void {
     if (!this.userName) {
