@@ -3,12 +3,14 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+import MissionModule from './mission'
 import UserModule from './user';
 
 export const store = new Vuex.Store({
   strict: true,
   state: {},
   modules: {
-    'user': UserModule
+    'mission': MissionModule,
+    'user': UserModule,
   },
 });
