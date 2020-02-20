@@ -18,9 +18,15 @@ export default class Button extends Vue {
   align-items: center;
   background-color: $primary-color;
   color: white;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   font-weight: bold;
   padding: 0.5rem 1rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 </style>
