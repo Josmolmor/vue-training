@@ -8,6 +8,10 @@ import { retrieveCurrentUser } from './api'
 export default class UserVuexModule extends VuexModule {
   user: User | undefined = undefined;
 
+  get currentUser(): User | undefined {
+    return this.user
+  }
+
   get userName(): string {
     return !!this.user ? this.user.name : ''
   }
