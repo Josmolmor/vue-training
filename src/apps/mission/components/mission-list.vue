@@ -1,7 +1,9 @@
 <template>
 <ul class="mission-list">
   <li v-for="mission in missionList" :key="mission.id">
-    <named-list-element :name="mission.name"><cni-button v-if="mission.editable" slot="action">Edit</cni-button></named-list-element>
+    <named-list-element :name="mission.name">
+      <cni-button v-if="mission.editable" slot="action" @click="edit(mission.id)">Edit</cni-button>
+    </named-list-element>
   </li>
 </ul>
 </template>
@@ -15,6 +17,7 @@ import CniButton from '@/components/buttons/cni-button.vue'
 import NamedListElement from '@/components/lists/named-list-element/named-list-element.vue'
 
 import { Mission } from '@/@types/mission';
+import { MissionRouteName } from '../../../router';
 
 const mission = namespace('mission')
 
@@ -29,6 +32,10 @@ export default class MissionList extends Vue {
 
   @mission.Action
   listMissions!: () => Promise<void>
+
+  edit(id: number): void {
+    this.$router.push({ name: MissionRouteName.DETAIL, params: { id: id.toString() }});
+  }
 
   mounted(): void {
     if (!this.missionList.length) {
