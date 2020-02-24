@@ -3,9 +3,9 @@
         <img class="header-logo" alt="Ce Ene I" src="/assets/logo.png"/>
         <nav class="nav-items">
             <ul>
-                <li>Main</li>
-                <li>Settings</li>
-                <li>Username</li>
+                <li><router-link to="/">Main</router-link></li>
+                <li><router-link to="settings">Settings</router-link></li>
+                <li v-if="userName"><router-link to="/">{{ userName | formatUserName }}</router-link></li>
             </ul>
         </nav>
     </header>
@@ -14,18 +14,35 @@
 <script lang="ts">
   import Vue from 'vue'
   import { Component } from 'vue-property-decorator'
+  import { Getter, Action } from 'vuex-class'
+  import { formatUserName } from '@/utils/formatUserName';
 
-  @Component
-  export default class Header extends Vue {}
+  @Component({
+    filters: {
+      formatUserName
+    }
+  })
+
+  export default class Header extends Vue {
+    @Getter
+    userName?: string;
+
+    @Action
+    retrieveUser!: () => Promise<void>;
+
+    created(): void {
+      if (!this.userName) {
+        this.retrieveUser()
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
-    @import url('https://fonts.googleapis.com/css?family=Roboto+bold');
     .header {
         align-items: center;
         background: url('~@/assets/bg.png') repeat;
         display: flex;
-        font-family: 'Roboto bold', sans-serif;
         justify-content: space-between;
     }
     .header-logo {
@@ -34,24 +51,26 @@
     }
     .nav-items {
         display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
         ul {
             align-items: center;
-            color: #99518F;
             display: flex;
-            font-weight: bold;
-            margin-right: 1rem;
-            padding: 0.25rem;
-            text-transform: uppercase;
+            text-decoration: none;
 
             li {
-                background-color: white;
+                background-color: #E6CADC;
                 border-radius: 0.25rem;
                 cursor: pointer;
-                padding: 0.25rem 0.75rem;
 
-            }
-            * + * {
-                margin-left: 1rem;
+                a {
+                    color: #99518f;
+                    padding: 0.75rem 1rem;
+                }
+                :hover {
+                    background-color: #99518F;
+                    color: white;
+                }
             }
         }
     }

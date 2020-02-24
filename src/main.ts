@@ -20,8 +20,14 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
+// import views you want to serve up in `router-view`
+import settings from './views/settings.vue'
+import {store} from '@/store';
+import {router} from '@/router';
+
 new Vue({
-  render: h =>
-    h(App),
-}).$mount(`#app`);
+  render: h => h(App), // mount the base component
+  router,
+  store,
+}).$mount('#app');
 

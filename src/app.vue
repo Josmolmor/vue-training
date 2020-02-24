@@ -1,5 +1,8 @@
 <template>
-    <Header />
+    <div id="app">
+        <Header />
+        <router-view></router-view>
+    </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +22,7 @@ export default class App extends Vue {
 <style lang="scss" scoped>
     @import url('https://fonts.googleapis.com/css?family=Roboto+bold');
 
-    html, body {
+    #app {
         font-family: 'Roboto bold', sans-serif;
     }
 </style>
