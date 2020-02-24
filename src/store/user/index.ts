@@ -4,9 +4,13 @@ import { User } from '@/@types/user';
 
 import { retrieveCurrentUser } from './api'
 
-@Module
+@Module({ namespaced: true })
 export default class UserVuexModule extends VuexModule {
   user: User | undefined = undefined;
+
+  get currentUser(): User | undefined {
+    return this.user
+  }
 
   get userName(): string {
     return !!this.user ? this.user.name : ''

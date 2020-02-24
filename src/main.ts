@@ -21,7 +21,7 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 // import views you want to serve up in `router-view`
-import settings from './views/settings.vue'
+import settings from './views/UserSettings/settings.vue'
 import {store} from '@/store';
 import {router} from '@/router';
 

@@ -14,8 +14,10 @@
 <script lang="ts">
   import Vue from 'vue'
   import { Component } from 'vue-property-decorator'
-  import { Getter, Action } from 'vuex-class'
+  import {namespace} from 'vuex-class';
   import { formatUserName } from '@/utils/formatUserName';
+
+  const user = namespace('user');
 
   @Component({
     filters: {
@@ -24,10 +26,10 @@
   })
 
   export default class Header extends Vue {
-    @Getter
+    @user.Getter
     userName?: string;
 
-    @Action
+    @user.Action
     retrieveUser!: () => Promise<void>;
 
     created(): void {

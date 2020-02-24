@@ -4,10 +4,6 @@ import { Mission } from '@/@types/mission';
 
 import { listMission, updateMission } from './api'
 
-/*
-* Modules can be namespaced or not, this is your decision.
-* When I create a store for an app, I usually namespace it
-*/
 @Module({ namespaced: true })
 export default class UserVuexModule extends VuexModule {
   indexedMissions: { [id: string]: Mission } = {};
