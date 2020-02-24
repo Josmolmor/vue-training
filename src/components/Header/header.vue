@@ -5,7 +5,7 @@
             <ul>
                 <li><router-link to="/">Main</router-link></li>
                 <li><router-link to="settings">Settings</router-link></li>
-                <li v-if="userName"><router-link to="/">{{ userName | formatUserName }}</router-link></li>
+                <li v-if="userName">{{ userName | formatUserName }}</li>
             </ul>
         </nav>
     </header>
@@ -63,7 +63,11 @@
             li {
                 background-color: #E6CADC;
                 border-radius: 0.25rem;
-                cursor: pointer;
+
+                &:last-child {
+                    color: #99518F;
+                    padding: 0.75rem 1rem;
+                }
 
                 a {
                     color: #99518f;

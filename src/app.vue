@@ -8,8 +8,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header/header.vue';
+import Button from '@/components/Button/cniButton.vue';
+
 @Component({
-  components: {Header},
+  components: {Header, Button},
 })
 export default class App extends Vue {
 
