@@ -1,11 +1,13 @@
 <template>
-<div>Let's get started</div>
+    <Header />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-@Component
+import Header from '@/components/Header/header.vue';
+@Component({
+  components: {Header},
+})
 export default class App extends Vue {
 
   created(): void {
@@ -15,4 +17,9 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss" scoped>
+    @import url('https://fonts.googleapis.com/css?family=Roboto+bold');
+
+    html, body {
+        font-family: 'Roboto bold', sans-serif;
+    }
 </style>

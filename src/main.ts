@@ -1,6 +1,6 @@
 // Specific polyfills to allow code compatibility with IE11
 import 'core-js/es6';
-import 'core-js/es7'; 
+import 'core-js/es7';
 import 'ie11-custom-properties';
 import 'element-closest-polyfill';
 import 'child-replace-with-polyfill';
@@ -18,7 +18,7 @@ import 'custom-event-polyfill'; // Polyfill to make Plyr working on IE11
 
 Vue.config.productionTip = false;
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 new Vue({
   render: h =>
