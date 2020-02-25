@@ -1,7 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-
 import { User } from '@/@types/user';
-
 import { retrieveCurrentUser } from './api'
 
 @Module({ namespaced: true })

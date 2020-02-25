@@ -1,6 +1,5 @@
-import { client } from '@/store/api'
-
-import { Mission } from '@/@types/mission'
+import { client } from '@/store/api';
+import { Mission } from '@/@types/mission';
 
 export async function listMission(): Promise<Mission[]> {
   const response = await client.get(`missions/`);

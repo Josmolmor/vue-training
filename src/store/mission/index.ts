@@ -1,7 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-
 import { Mission } from '@/@types/mission';
-
 import { listMission, updateMission } from './api'
 
 @Module({ namespaced: true })
