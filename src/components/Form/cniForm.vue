@@ -47,7 +47,6 @@
     }
 
     inputChange(): any {
-      console.log(this.form.name.value);
       return this.form.name.value.length >= 8 ? this.disabledButton = false : this.disabledButton = true;
     }
 

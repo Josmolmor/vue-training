@@ -14,9 +14,7 @@ import Header from '@/components/Header/header.vue';
 })
 export default class App extends Vue {
 
-  created(): void {
-    console.log(process.env.VUE_APP_HELLO_DEV)
-  }
+  created(): void {}
 }
 </script>
 
