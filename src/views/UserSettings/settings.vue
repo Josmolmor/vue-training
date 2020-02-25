@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <div class="content">
+        <div class="spinner" v-if="!currentUser"><Spinner /></div>
+        <div v-else class="content">
             <p class="text"><strong>ID</strong>: {{ currentUser.id}}</p>
             <p class="text"><strong>Name</strong>: {{ currentUser.name }}</p>
             <img class="profile-img" src="https://picsum.photos/200" alt="profile-pic"/>
@@ -13,10 +14,14 @@
   import { Component } from 'vue-property-decorator'
   import {namespace} from 'vuex-class';
   import {User} from '@/@types/user';
+  import Spinner from '@/components/Spinner/spinner.vue'
 
   const user = namespace('user');
 
-  @Component
+  @Component({
+    components: {
+    Spinner
+  }})
   export default class Settings extends Vue {
 
     @user.Getter
@@ -46,5 +51,11 @@
     .profile-img {
         border-radius: 0.25rem;
         margin-top: 1rem;
+    }
+    .spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>

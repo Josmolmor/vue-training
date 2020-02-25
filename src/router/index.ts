@@ -7,6 +7,7 @@ import MissionDetail from '@/apps/missions/views/MissionDetail/missionDetail.vue
 const routes = [
   {
     path: '/',
+    name: 'main',
     component: MissionList
   },
   {

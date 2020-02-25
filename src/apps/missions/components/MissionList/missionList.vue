@@ -1,12 +1,15 @@
 <template>
     <div class="container">
-        <div class="counter-container">
-            <p>{{ missionCount }} missions</p>
-        </div>
-        <div class="content">
-            <div v-for="mission in missionList" :key="mission.id" class="mission-element">
-                {{ mission.name }}
-                <CniButton v-if="mission.editable" class="button" @click="edit(mission.id)">Edit</CniButton>
+        <div class="spinner" v-if="!missionCount"><Spinner /></div>
+        <div v-else>
+            <div class="counter-container">
+                <p v-if="missionCount">{{ missionCount }} missions</p>
+            </div>
+            <div class="mission-list">
+                <div v-for="mission in missionList" :key="mission.id" class="mission-element">
+                    {{ mission.name }}
+                    <CniButton v-if="mission.editable" class="button" @click="edit(mission.id)">Edit</CniButton>
+                </div>
             </div>
         </div>
     </div>
@@ -18,12 +21,14 @@
   import { namespace} from 'vuex-class';
   import {Mission} from '@/@types/mission';
   import CniButton from '@/components/Button/cniButton.vue'
+  import Spinner from '@/components/Spinner/spinner.vue'
 
   const mission = namespace('mission');
 
   @Component({
     components: {
       CniButton,
+      Spinner,
     }
   })
   export default class MissionList extends Vue {
@@ -51,7 +56,7 @@
 
 <style lang="scss" scoped>
     .container {}
-    .content {
+    .mission-list {
         display: flex;
         flex-direction: column;
         padding: 0 2rem;
@@ -78,16 +83,7 @@
         box-shadow: 6px 4px 20px -5px rgba(0,0,0,0.25);
 
         .button {
-            background-color: #99518F;
-            border-radius: 0.25rem;
-            color: white;
             display: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-
-            &:hover {
-                background-color: #7a3f71;
-            }
         }
 
         &:hover {
@@ -97,5 +93,11 @@
                 display: block;
             }
         }
+    }
+    .spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>
